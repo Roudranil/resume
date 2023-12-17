@@ -1,0 +1,482 @@
+\documentclass[11pt]{extarticle}
+\usepackage[a4paper, margin=0.2in]{geometry}
+\usepackage{soul}
+\usepackage{fontawesome5}
+\usepackage[unicode]{hyperref}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{longtable}
+\usepackage{moresize}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{array}
+\usepackage{relsize}
+\usepackage[skins]{tcolorbox}
+\usepackage{color}
+% \usepackage{showframe}
+\usepackage{xhfill}
+
+
+%% Character encoding
+% \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+%% for text only output
+\renewcommand\labelitemi{--} % Bullet list with a dash
+\usepackage{xpatch}
+\usepackage{accsupp}
+
+\setlength{\parsep}{0em}
+
+%% Underlining
+\makeatletter
+\DeclareRobustCommand*\myul{%
+    \def\SOUL@everyspace{\underline{\space}\kern\z@}
+    \def\SOUL@everytoken{%
+     \setbox0=\hbox{\the\SOUL@token}%
+     \ifdim\dp0>\z@
+        \the\SOUL@token
+     \else
+        \underline{\the\SOUL@token}%
+     \fi}
+\SOUL@}
+\makeatother
+
+%% making glyphs invisible
+\newcommand*{\mapsymbol}{%
+    \BeginAccSupp{method=hex,unicode,ActualText=Location:}%
+        \faMapMarker*%
+    \EndAccSupp{}
+}%
+
+\newcommand*{\linkedinsymbol}{%
+\protect\BeginAccSupp{ActualText=LinkedIn:}%
+{{\faLinkedin}~}%
+\protect\EndAccSupp{}}%
+
+\newcommand*{\phonesymbol}{%
+\protect\BeginAccSupp{ActualText=Telephone:}%
+{{\faPhone}~}%
+\protect\EndAccSupp{}}%
+
+\newcommand*{\emailsymbol}{%
+\protect\BeginAccSupp{ActualText=Email:}%
+{{\faEnvelope}~}%
+\protect\EndAccSupp{}}%
+
+\newcommand*{\githubsymbol}{%
+\protect\BeginAccSupp{ActualText=GitHub:}%
+{{\faGithub}~}%
+\protect\EndAccSupp{}}%
+
+\newcommand*{\websitesymbol}{%
+\protect\BeginAccSupp{ActualText=Personal Website:}%
+{{\faGlobe}}%
+\protect\EndAccSupp{}}%
+
+
+%% command definitions for accsupp
+\newcommand{\link}[2]{
+    \BeginAccSupp{method = pdfstringdef, ActualText = {\protect\unichar{"000A}#2\protect\unichar{"000A}}}
+        \href{#2}{\texttt{\ul{#1}}}
+    \EndAccSupp{}
+}
+
+\newcommand{\mail}{
+    \BeginAccSupp{method = pdfstringdef, ActualText = {\protect\unichar{"000A}roudranil@cmi.ac.in\protect\unichar{"000A}}}
+        \href{mailto:roudranil@cmi.ac.in}{\texttt{\ul{roudranil@cmi.ac.in}}}
+    \EndAccSupp{}
+}
+%\href{https://roudranil.github.io/}{\ul{Personal website}}
+
+\definecolor{deepred}{RGB}{103, 28, 28}
+\definecolor{mycyan}{RGB}{37, 139, 197}
+\definecolor{mygray}{RGB}{120, 144, 156}
+\definecolor{deeporange}{RGB}{135, 54, 0}
+\definecolor{deepblue}{RGB}{0, 53, 98}
+\definecolor{midorange}{RGB}{139, 76, 8}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+\definecolor{lightorange}{RGB}{230, 126, 34}
+\definecolor{lightcyan}{RGB}{232, 251, 255}
+\hypersetup{
+    colorlinks = true,
+    linkcolor = blue,
+    filecolor = magenta,      
+    urlcolor = blue,
+    citecolor = violet,
+    linktoc = all
+}
+\setlength{\multicolsep}{1.0pt plus 2.0pt minus 1.5pt}
+
+\newcommand{\sechead}[1]{
+   \BeginAccSupp{method=escape, ActualText=#1}
+      {\LARGE{\color{deepblue}{\textsc{#1}}}}
+   \EndAccSupp{}
+}
+
+\newtcbox{\txttabgray}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.4pt,top=0mm,bottom=0mm,right=0mm,left=0mm,arc=4pt,boxsep=2pt,before upper={\vphantom{dlg}},colframe=lightgray,colback=lightgray, coltext=blue}
+\newtcbox{\txttaborange}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.4pt,top=0mm,bottom=0mm,right=0mm,left=0mm,arc=4pt,boxsep=2pt,before upper={\vphantom{dlg}},colframe=lightorange,colback=lightorange, coltext=midorange}
+\newtcbox{\txttabcyan}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.4pt,top=0mm,bottom=0mm,right=0mm,left=0mm,arc=4pt,boxsep=2pt,before upper={\vphantom{dlg}},colframe=lightcyan,colback=lightcyan, coltext=cyan}
+
+\begin{document}
+   \vspace*{-0.5em}
+
+    \begin{tabular}[H]{m{7em}l}
+        & \\[-2ex]
+        \multicolumn{1}{c}{
+            \begin{tabular}{@{}c@{}}
+                \includegraphics[width=2.2cm]{cmi-logo.png}\\
+                
+            \end{tabular}
+        } &
+        \begin{tabular}{@{}l@{}}
+            \BeginAccSupp{method=escape, ActualText=Name: Roudranil Das}\textcolor{deepred}{\HUGE{\color{deepblue}{\textsc{Roudranil Das}}}}\EndAccSupp{}\\\vspace{-0.1em}\\
+            \mapsymbol\;\textit{Kolkata, West Bengal, India}\quad\;\websitesymbol\link{https://roudranil.github.io/}{https://roudranil.github.io/}\\\vspace{-0.6em}\\
+            \emailsymbol\mail\quad\;\linkedinsymbol\link{roudranil-das}{https://www.linkedin.com/in/roudranil-das/}\quad\;\\\vspace{-0.6em}\\
+            \githubsymbol\link{Roudranil}{https://github.com/Roudranil}\quad\;\phonesymbol+91-9874137286\\\vspace{-0.6em}
+        \end{tabular}
+    \end{tabular}\\
+
+
+    %% PROFILE
+    %%% to be customied according to companies. The company for which it is customised right now is to be mentioned below:
+    %%% currently customised for: Accenture
+
+%    \sechead{Profile}\quad\xrfill[1ex]{.4pt}
+
+%     \begin{tabular}[H]{m{52em}}
+%        \\
+%        I am a detail-oriented, results driven student of Data Science with a strong background in Mathematics. I have a strong inclination towards performing statistical and business analytics, and an interest in improving business strategies using machine learning and related tools. 
+%    \end{tabular}\\\\
+
+    % \par\noindent\rule{\textwidth}{0.4pt}\par
+    %% EDUCATION-----------------------------------------------------
+    
+    
+    \sechead{Education}\quad\xrfill[1ex]{.4pt}
+
+    \begin{tabular}[H]{m{7em}l}
+            % &   {\LARGE \textsc{{\color{deepblue} Education}}}\\
+            &   \\[-1ex]
+            \multicolumn{1}{r}{
+            \begin{tabular}{@{}r@{}}
+                \textit{2022 - 2024}    \\
+                \textit{(ongoing)}  \\
+                \textit{Tamil Nadu}\\
+                \textit{India}
+            \end{tabular}}  &   
+            \begin{tabular}{@{}l@{}}
+                \textbf{\large \color{deeporange} M.Sc. Data Science}   \\
+                \sffamily{\textbf{Chennai Mathematical Institute}}\\
+                \hspace{-2.7mm}\myul{\textit{SGPA}} (after semester 2): 9.25\\
+            \end{tabular}\\
+            & \\
+            % \vspace*{-1em}\\
+            \multicolumn{1}{r}{
+            \begin{tabular}{@{}r@{}}
+                \textit{2019 - 2022}    \\
+                \textit{West Bengal}\\
+                \textit{India}
+            \end{tabular}}  &   
+            \begin{tabular}{@{}l@{}}
+                \textbf{\large \color{deeporange} B.Sc. Mathematics (Honours)}   \\
+                \sffamily{\textbf{St. Xavier's College (Autonomous), Kolkata}}\\
+                \hspace{-2.7mm}\myul{\textit{CGPA}}: 8.46\\
+            \end{tabular}    
+    \end{tabular}\\\\
+
+    %% WORK EXPERIENCE -------------------------------------------------
+    % \sechead{Experience}\quad\xrfill[1ex]{.4pt}
+    
+    % \begin{tabular}[H]{m{7em}l}
+    %     & \\[-1ex]
+    %     \multicolumn{1}{r}{
+    %         \begin{tabular}{@{}r@{}}
+    %             \textit{Aug 2024 -}\\
+    %             \textit{ongoing}\\
+    %         \end{tabular}}  &   
+    %         \begin{tabular}{@{}p{39em}@{}}
+    %             {\textbf{Data Scientist - \sffamily{Kantar Analytics}}}
+    %         \end{tabular}\\
+    % \end{tabular}\\\\
+
+    %% INTERNSHIPS-------------------------------------------------------
+    \sechead{Internships}\quad\xrfill[1ex]{.4pt}
+    
+    \begin{tabular}[H]{m{7em}l}
+           % &   {\LARGE \textsc{{\color{deepblue} Education}}}\\
+        &   \\[-1ex]
+        %    \multicolumn{1}{r}{
+        %    \begin{tabular}{@{}r@{}}
+        %        \textit{Mar 2023 - Apr 2023}
+        %    \end{tabular}}  &   
+        %    \begin{tabular}{@{}l@{}}
+        %        {\textbf{Machine Learning Intern - \sffamily{Hodu Solutions}}}\\
+        %        % \hspace{-2.7mm}\myul{\textit{CGPA}}: NA\\
+        %    \end{tabular} \\
+        %    & \\[-2ex]
+        \multicolumn{1}{r}{
+        \begin{tabular}{@{}r@{}}
+            \textit{Aug 2023 -}\\
+            \textit{ongoing}\\
+        \end{tabular}}  &   
+        \begin{tabular}{@{}p{39em}@{}}
+            {\textbf{Machine Learning Intern - \sffamily{Hodu Solutions}}} (as industry project at CMI)\\
+            Tools used:\textcolor{deeporange}{\hspace{-2.7mm}\myul{Python, pandas, yahoo-finance}}\\
+            \textbf{--} Performed fundamental analysis and intrinsic valuation of companies traded on the US markets\\
+            \textbf{--} Analysed historical price and trading data of above companies and derived technical indicators\\
+            \textbf{--} Analysed performance of common price-action trading strategies in order to rank the strategies and build an ensemble model
+        \end{tabular}\\
+        & \\
+        \multicolumn{1}{r}{
+        \begin{tabular}{@{}r@{}}
+            \textit{May 2023 -}\\
+            \textit{July 2023}\\
+        \end{tabular}}  &   
+        \begin{tabular}{@{}p{39em}@{}}
+            {\textbf{Data Science Summer Intern - \sffamily{LTIMindtree}}}\\
+            Tools used:\textcolor{deeporange}{\hspace{-2.7mm}\myul{Python, pandas, spaCy, BERTopic, FLASK-Restful, Streamlit}}\\
+            \textbf{--} Conducted statistical analysis on raw text data and developed a comprehensive data cleaning pipeline tailored for future applications. Implemented data quality checks based on statistical estimates.\\
+            \textbf{--} Utilized topic modeling techniques to extract optimum cluster values and identify topic clusters, providing valuable insights for assessing data quality.\\
+            \textbf{--} Incorporated the data quality checking pipelne as a RESTful API service, enabling end-to-end capabilities for efficient data processing and access.
+        \end{tabular}\\
+    \end{tabular}\\\\
+
+    % \par\noindent\rule{\textwidth}{0.4pt}\par
+    %% PROJECTS----------------------------------------------------------
+    \sechead{Projects}\quad\xrfill[1ex]{.4pt}
+
+    % Projects to be done
+    %% MiniGPT (easy)
+    %% Music sheet to sargam (diff)
+    %% text to image (diff)
+    \begin{longtable}[H]{m{7em}l}
+        % &   \\[-1ex]
+        \multicolumn{1}{r}{
+            \begin{tabular}{@{}r@{}}
+                \textit{August 2023 -}\\
+                \textit{ongoing}\\
+                % \link{\githubsymbol Link}{https://github.com/Roudranil/comparative-analysis-of-ml-algorithms}
+            \end{tabular}} & 
+        \begin{tabular}{@{}p{39em}@{}}
+            \textbf{{Character level Language Model}}\\
+            Tools used:\textcolor{deeporange}{\hspace{-2.7mm}\myul{Python, PyTorch, nltk}}\\
+            \textbf{--} Implementing a character level language model from scratch.\\
+            \textbf{--} Goal is to progressively generate text similar to the corpus used for training. \\
+        \end{tabular}\\
+        & \\
+        \multicolumn{1}{r}{
+            \begin{tabular}{@{}r@{}}
+                \textit{July 2023 -}\\
+                \textit{ongoing}\\
+                % \link{\githubsymbol Link}{https://github.com/Roudranil/comparative-analysis-of-ml-algorithms}
+            \end{tabular}} & 
+        \begin{tabular}{@{}p{39em}@{}}
+            \textbf{{Optical Music Recognition - recognition of components of sheet music}}\\
+            Tools used:\textcolor{deeporange}{\hspace{-2.7mm}\myul{Python, openCV, matplotlib}}\\
+            \textbf{--} Collected a repository of sheet music pdf and corressponding embedded metadata.\\
+            \textbf{--} Performed segmentation of the staves and staff lines of a printed sheet music pdf file using openCV.\\
+        \end{tabular}\\
+        & \\
+        \multicolumn{1}{r}{
+            \begin{tabular}{@{}r@{}}
+                \textit{Jan 2023 -}\\
+                \textit{Feb 2023}\\
+                \link{\githubsymbol Link}{https://github.com/Roudranil/comparative-analysis-of-ml-algorithms}
+            \end{tabular}} & 
+        \begin{tabular}{@{}p{39em}@{}}
+            \textbf{{Comparative Analysis of Decision trees, Naive Bayes and Ensemble models}}\\
+            Tools used:\textcolor{deeporange}{\hspace{-2.7mm}\myul{Python, scikit-learn, matplotlib, pandas, optuna}}\\
+            \textbf{--} Analysed performances of the algorithms in both classification and regression tasks. \\
+            \textbf{--} Performed feature engineering to improve predictive metrics (accuracy and recall) by 3-4 percentage points.\\
+            \textbf{-- } Carried out hyperparameter tuning for both models and cost complexity pruning for decision tree to improve predictive metrics and generalisability further.
+        \end{tabular}\\
+        & \\
+        \multicolumn{1}{r}{
+            \begin{tabular}{@{}r@{}}
+                \textit{Dec 2022}\\
+                \link{\githubsymbol Link}{https://github.com/Roudranil/speech-recognition-with-pytorch}
+            \end{tabular}} & 
+        \begin{tabular}{@{}p{39em}@{}}
+            \textbf{{Audio Classification with CNN-LSTM networks}}\\
+            Tools used:\textcolor{deeporange}{\hspace{-2.7mm}\myul{Python, PyTorch, torchaudio, pandas}}\\
+            \textbf{--} Analysed audio samples of the words "zero" to "nine" \\
+            \textbf{--} Trained a baseline CNN, a CRNN and a parallel CNN-RNN model with the CNN-RNN model achieving 84\% accuracy on test set (+15\% over CRNN) and F1-score of 84\%.\\
+        \end{tabular}\\
+        & \\
+        \multicolumn{1}{r}{
+            \begin{tabular}{@{}r@{}}
+                \textit{Oct 2022 - }\\
+                \textit{Dec 2022}\\
+                \link{\githubsymbol Link}{https://github.com/Roudranil/deforestation-and-forest-conversion}
+            \end{tabular}} & 
+        \begin{tabular}{@{}p{39em}@{}}
+            \textbf{{Deforestation and Forest Conversion}}\\
+            Tools used:\textcolor{deeporange}{\hspace{-2.7mm}\myul{R, ggplot, tidyverse, R-Shiny}} | Chennai Mathematical Institute\\
+            \textbf{--} Created visualisations to better understand causes for deforestation. [\link{Report}{https://github.com/Roudranil/deforestation-and-forest-conversion/blob/main/doc/report.pdf}]\\
+            \textbf{--} Built a dashboard web app with \texttt{R Shiny} for the above. [\link{Dashboard}{https://roudranil.shinyapps.io/forest-and-deforestation/}]\\
+        \end{tabular}\\
+        & \\
+        % & \\[-2ex]
+        % \multicolumn{1}{r}{
+        %     \begin{tabular}{@{}r@{}}
+        %         \textit{Oct 2021 - }\\
+        %         \textit{May 2022}\\
+        %         \link{\githubsymbol Link}{https://github.com/Roudranil/Bayesian-analysis-of-efficacy-of-the-ChAdOx1-nCoV-19-AZD1222-vaccine}
+        %     \end{tabular}} & 
+        % \begin{tabular}{@{}p{39em}@{}}
+        %     \hspace{-3mm}\textbf{\myul{Bayesian Analysis of Efficacy of the ChAdOx1 nCoV-19 (AZD1222) Vaccine}}\\
+        %     Tools used:\textcolor{deeporange}{\hspace{-2.7mm}\myul{Python, PyMC3, Matplotlib}} | St. Xavier's College, Kolkata\\
+        %     \textbf{--} Used Bayesian inference to compute the vaccine efficacy.\\
+        %     \textbf{--} Cross checked vaccine efficacy using standard and hierarchical Bayesian models with \texttt{PyMC3}. \\
+        % \end{tabular}
+        % & \\[-2ex]
+        % % \rule{0pt}{1ex} \\   
+        \multicolumn{1}{r}{
+            \begin{tabular}{@{}r@{}}
+                \textit{Aug 2022 - }\\
+                \textit{Apr 2023}\\
+                \link{\githubsymbol Link}{https://github.com/Roudranil/Financial-Literacy-project}
+            \end{tabular}} & 
+        \begin{tabular}{@{}p{39em}@{}}
+            \textbf{Financial Literacy among 18-35 Year Olds}\\
+            Tools used:\textcolor{deeporange}{\hspace{-2.7mm}\myul{Python, NumPy, pandas, Statsmodels, Matplotlib}}\\
+            \textbf{--} Collected responses to questions measuring financial literacy and scored them.\\
+            \textbf{--} Performed exploratory statistical analysis to determine factors of financial literacy\\
+        \end{tabular}
+    \end{longtable}
+    % \par\noindent\rule{\textwidth}{0.4pt}\par
+    %% WORK EXPERIENCE---------------------------------------------------
+
+    % \begin{tabular}[H]{m{7em}l}
+    %     &   \\
+    %     &   {\LARGE \textsc{Internships}}\\
+    %     &   \\
+    % \end{tabular}
+
+    % \par\noindent\rule{\textwidth}{0.4pt}\par
+    %% TECHNICAL SKILLS--------------------------------------------------
+    \sechead{Technical Skills}\quad\xrfill[1ex]{.4pt}
+    
+    \begin{tabular}[H]{m{7em}l}
+        &   \\[-1ex]
+        \multicolumn{1}{r}{
+            \begin{tabular}{@{}r@{}}
+                \textit{Languages}
+            \end{tabular}
+        }  &   \texttt{Python}, \texttt{MySQL}, \texttt{R}, \texttt{C}, \LaTeX\\
+        \multicolumn{1}{r}{
+            \begin{tabular}{@{}r@{}}
+                \textit{ML/AI}
+            \end{tabular}
+        }  &  NumPy, Pandas, Matplotlib, Scikit-Learn, ggplot2, PyTorch, BERTopic, spaCy, NLTK\\
+        \multicolumn{1}{r}{
+            \begin{tabular}{@{}r@{}}
+                \textit{Misc}
+            \end{tabular}
+        }  &  Minitab, Flask, Streamlit, Linux\\
+    \end{tabular}\\\\
+
+    %% KEY COURSES TAKEN ---------------------------------------------------------
+    \sechead{Key Courses Taken}\quad\xrfill[1ex]{.4pt}
+    
+    \begin{tabular}[H]{m{7em}p{42em}}
+        &   \\[-1ex]
+        \multicolumn{1}{r}{\begin{tabular}{@{}r@{}}
+            \textit{Postgraduate}
+        \end{tabular}}    &   
+        \begin{tabular}{@{}p{39em}@{}}
+            Machine Learning and ML theory, Deep Learning and Advanced ML\(^*\), Statistics and Visualisation with \texttt{R}, Regression techniques\(^*\), NLP\(^*\), RDBMS and SQL, Python and Data Structures, Design and Analysis of algorithms 
+        \end{tabular}\\
+        & \begin{tabular}{@{}r@{}}
+            {\smaller \(^*\) \textit{indicates ongoing courses}}
+        \end{tabular}\\
+        & \\[-2ex]
+        \multicolumn{1}{r}{\begin{tabular}{@{}r@{}}
+            \textit{Undergraduate}
+        \end{tabular}}    &   
+        \begin{tabular}{@{}p{39em}@{}}
+            Linear algebra, Real analysis, Multivariable Calculus, Differential equations, Mathematical Statistics, \texttt{R}, \texttt{C}
+        \end{tabular}\\
+    \end{tabular}\\\\
+
+
+    % \par\noindent\rule{\textwidth}{0.4pt}\par
+    %% AWARDS------------------------------------------------------------
+    \sechead{Awards and Achievements}\quad\xrfill[1ex]{.4pt}
+
+    \begin{tabular}[H]{m{7em}p{42em}}
+        &   \\[-1ex]
+        \multicolumn{1}{r}{\textit{2023}} &  
+        \begin{tabular}{@{}p{39em}@{}}
+            \textbf{Reliance Foundation Postgraduate Scholarship Awardee}
+        \end{tabular} \\
+        & \\[-2ex]
+        \multicolumn{1}{r}{\textit{2019}} &  
+        \begin{tabular}{@{}p{39em}@{}}
+            \textbf{INSPIRE Scholarship for Higher Education, Dept. of Science and Technology, Government of India}
+        \end{tabular} \\
+        & \\[-2ex]
+        \multicolumn{1}{r}{\textit{2019}} &  \begin{tabular}{@{}p{39em}@{}}\textbf{Jagadish Bose National Science Talent Search Senior Scholarship Awardee}\end{tabular} \\
+        & \\[-2ex]
+        \multicolumn{1}{r}{\textit{2017}} &  \begin{tabular}{@{}p{39em}@{}}\textbf{Jagadish Bose National Science Talent Search Junior Scholarship Awardee}\end{tabular}
+    \end{tabular}\\\\
+
+    %% POS---------------------------------------------------
+    \sechead{Positions of Responsibility}\quad\xrfill[1ex]{.4pt}
+
+    \begin{tabular}[H]{m{7em}l}
+        &   \\[-1ex]
+        \multicolumn{1}{r}{
+            \begin{tabular}{@{}r@{}}
+                \textit{CMI}\\
+                \textit{2023}
+            \end{tabular}
+        } &
+        \begin{tabular}{@{}p{39em}@{}}
+            \textbf{Teaching Assistant - Mathematical methods and Analysis}\\
+            Serving as a teaching assistant for the above course offered to MSc First year students.
+        \end{tabular}\\
+        & \\[-2ex]
+        \multicolumn{1}{r}{
+            \begin{tabular}{@{}r@{}}
+                \textit{CMI}\\
+                \textit{2022}
+            \end{tabular}
+        } &
+        \begin{tabular}{@{}l@{}}
+            \textbf{Placement Representative}\\
+            Serving as a representative on the CMI Placement Committee.
+        \end{tabular}\\
+        %& \\[-2ex]
+        %\multicolumn{1}{r}{
+        %    \begin{tabular}{@{}r@{}}
+        %        \textit{St. Xavier's College,}\\
+        %        \textit{Kolkata, 2021}
+        %    \end{tabular}
+        %}  &    
+        %\begin{tabular}{@{}p{39em}@{}}
+            %\textbf{Director, Systems, Analytica 2021}\\
+            %Successfully served as the technical lead in the first online fest of the Department of \\Mathematics - Analytica 2021.
+        %\end{tabular}
+    \end{tabular}\\\\
+
+
+    %% EXTRA---------------------------------------------------
+    \sechead{Extracurricular}\quad\xrfill[1ex]{.4pt}
+
+    \begin{tabular}[H]{m{7em}l}
+       &   \\[-1ex]
+       \multicolumn{1}{r}{
+           \begin{tabular}{@{}r@{}}
+               \textit{2017 onwards}
+           \end{tabular}
+       } &
+       \begin{tabular}{@{}l@{}}
+           \textbf{Music}\\
+           Have been playing the mandolin since 2017.
+       \end{tabular}\\
+    \end{tabular}
+
+\end{document}
